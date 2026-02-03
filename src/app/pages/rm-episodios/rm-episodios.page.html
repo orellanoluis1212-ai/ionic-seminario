@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar class="toolbar-orange">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
@@ -32,7 +32,7 @@
   <ng-template>
 
     <ion-header>
-      <ion-toolbar color="primary">
+      <ion-toolbar class = "toolbar-orange">
 
           <ion-text slot="start" id="volver" fill="clear" (click)="closeModal()">Regresar</ion-text>
         <ion-title>Información</ion-title>
@@ -47,7 +47,7 @@
 
         <h1>{{ selected.name }}</h1>
         <p>
-          <ion-badge color="tertiary">{{ selected.episode }}</ion-badge>
+          <ion-badge color="success">{{ selected.episode }}</ion-badge>
           <br />
           {{ selected.air_date | date:'longDate' }}
         </p>
