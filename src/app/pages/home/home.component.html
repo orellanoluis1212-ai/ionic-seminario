@@ -1,30 +1,92 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Inicio</ion-title>
-    
+  <ion-toolbar color="warning">
+    <ion-title>Inicio Actividad 1-5 Luis Romero</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding">
-  <p>Este es el componente home</p>
+
+<ion-content class="contenedor-principal">
+  <ion-grid class="cuadricula-menu">
+    <ion-row>
+      <!-- IMAGEN EN CADA TARJETA -->
+      <ion-col size="6" size-md="4" size-lg="3">
+        <ion-card class="tarjeta-menu" routerLink="/registro-usuario">
+          <img src="assets/icon/registro-usuario.avif" class="imagen-tarjeta" alt="Registrar Usuarios">
+          <ion-card-header>
+            <ion-card-subtitle>Registrar Usuarios</ion-card-subtitle>
+            <p>Actividad 1-2</p>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      
+      <ion-col size="6" size-md="4" size-lg="3">
+        <ion-card class="tarjeta-menu" routerLink="/listado-usuario">
+          <img src="assets/icon/listado-usuarios.jpg" class="imagen-tarjeta" alt="Listado Usuarios">
+          <ion-card-header>
+            <ion-card-subtitle>Listado Usuarios</ion-card-subtitle>
+            <p>Actividad 1-2</p>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      
+      <ion-col size="6" size-md="4" size-lg="3">
+        <ion-card class="tarjeta-menu" routerLink="/registro-articulo">
+          <img src="assets/icon/registro-articulo.webp" class="imagen-tarjeta" alt="Registrar Artículos">
+          <ion-card-header>
+            <ion-card-subtitle>Registrar Artículos</ion-card-subtitle>
+            <p>Actividad 1-2</p>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      
+      <ion-col size="6" size-md="4" size-lg="3">
+        <ion-card class="tarjeta-menu" routerLink="/listado-articulo">
+          <img src="assets/icon/listado-articulos.jpg" class="imagen-tarjeta" alt="Listado Artículos">
+          <ion-card-header>
+            <ion-card-subtitle>Listado Artículos</ion-card-subtitle>
+            <p>Actividad 1-2</p>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      
+      <ion-col size="6" size-md="4" size-lg="3">
+        <ion-card class="tarjeta-menu" routerLink="/qwen">
+          <img src="assets/icon/chat-ia.png" class="imagen-tarjeta" alt="Chat">
+          <ion-card-header>
+            <ion-card-subtitle>Chat</ion-card-subtitle>
+            <p>Actividad 3</p>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      
+      <ion-col size="6" size-md="4" size-lg="3">
+        <ion-card class="tarjeta-menu" routerLink="/rm-graphql">
+          <img src="assets/icon/personajes-rm.png" class="imagen-tarjeta" alt="Personajes">
+          <ion-card-header>
+            <ion-card-subtitle>Personajes</ion-card-subtitle>
+            <p>Actividad 4</p>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      
+      <ion-col size="6" size-md="4" size-lg="3">
+        <ion-card class="tarjeta-menu" routerLink="/rm-episodios">
+          <img src="assets/icon/episodios.jpg" class="imagen-tarjeta" alt="Episodios">
+          <ion-card-header>
+            <ion-card-subtitle>Episodios</ion-card-subtitle>
+            <p>Actividad 4</p>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      
+      <ion-col size="6" size-md="4" size-lg="3">
+        <ion-card class="tarjeta-menu" routerLink="/permisos-cam-y-mic">
+          <img src="assets/icon/camaraymicro.webp" class="imagen-tarjeta" alt="Permisos">
+          <ion-card-header>
+            <ion-card-subtitle>Permisos</ion-card-subtitle>
+            <p>Actividad 5</p>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
-<ion-button routerLink="/registro-usuario">
-    Registrar usuarios
-</ion-button>
-<ion-button routerLink="/listado-usuario">
-    Ir al listado de usuarios
-</ion-button>
-<ion-button routerLink="/registro-articulo">
-    Registrar articulos
-</ion-button>
-<ion-button routerLink="/listado-articulo">
-    Ir al listado de articulos
-</ion-button>
-<ion-button routerLink="/qwen">
-    Chat
-</ion-button>
-<ion-button routerLink="/rm-graphql">
-    Personajes Rick And Morty
-</ion-button>
-<ion-button routerLink="/rm-episodios">
-    Episodios Rick And Morty
-</ion-button>

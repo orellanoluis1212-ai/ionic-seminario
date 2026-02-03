@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar class="toolbar-orange">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Permisos</ion-title>
+  </ion-toolbar>
+</ion-header>
+<br>
+<ion-content class="page-orange">
+
+  <div class="card-orange">
+    <ion-button expand="block" class="btn-white" (click)="solicitarPermisos()">
+      Solicitar permisos
+    </ion-button>
+
+    <div class="status">
+      <div>Cámara: {{ estadoCamara }}</div>
+      <div>Micrófono: {{ estadoMicrofono }}</div>
+    </div>
+  </div>
+
+  <div class="card-white" *ngIf="estadoCamara === 'concedido'">
+    <!-- SOLUCIÓN 2: Usar divs separados para asegurar el timing -->
+    <div *ngIf="!videoStream">
+      <img
+        src="\assets\icon\camara-desactivada.png"
+        class="video-preview"
+        alt="Vista previa de la cámara"
+      />
+    </div>
+
+    <div *ngIf="videoStream">
+      <video
+        autoplay
+        playsinline
+        muted
+        class="video-preview"
+        #videoElement>
+      </video>
+    </div>
+
+    <ion-button
+      expand="block"
+      color="danger"
+      (click)="videoStream ? detenerCamara() : iniciarCamara()">
+      {{ videoStream ? 'Detener cámara' : 'Iniciar cámara' }}
+    </ion-button>
+
+    <ion-button
+      expand="block"
+      color="success"
+      (click)="tomarFoto()"
+      [disabled]="!videoStream">
+      Capturar foto
+    </ion-button>
+
+    <img *ngIf="fotoCapturada" [src]="fotoCapturada" class="foto-capturada" />
+  </div>
+
+  <div class="card-white" *ngIf="estadoMicrofono === 'concedido'">
+    <ion-button
+      expand="block"
+      color="medium"
+      (click)="grabarAudio()"
+      [disabled]="grabando">
+      {{ grabando ? 'Grabando ' + segundosRestantes + 's' : 'Grabar audio' }}
+    </ion-button>
+
+    <audio *ngIf="audioUrl" [src]="audioUrl" controls></audio>
+  </div>
+
+  <div class="card-orange">
+    <ion-input
+      [(ngModel)]="descripcionTexto"
+      placeholder="Escribe algo como: estoy feliz // estoy probando // estoy triste">
+    </ion-input>
+
+    <ion-button
+      expand="block"
+      class="btn-white"
+      (click)="analizarTexto()"
+      [disabled]="analizando">
+      {{ analizando ? 'Analizando...' : 'Analizar texto' }}
+    </ion-button>
+
+    <div class="resultado" *ngIf="resultadoSentimiento">
+      {{ resultadoSentimiento }}
+    </div>
+  </div>
+
+  <canvas hidden></canvas>
+
+</ion-content>

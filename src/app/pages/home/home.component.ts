@@ -1,5 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { IonHeader, IonContent, IonTitle, IonToolbar, IonButton } from "@ionic/angular/standalone";
+import { 
+  IonHeader, 
+  IonToolbar, 
+  IonTitle, 
+  IonContent, 
+  IonCard, 
+  IonCardHeader, 
+  IonCardSubtitle, 
+
+  IonGrid, 
+  IonRow, 
+  IonCol 
+} from '@ionic/angular/standalone';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -7,7 +19,16 @@ import { RouterLink } from '@angular/router';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  imports: [IonHeader, IonContent, IonTitle, IonToolbar, IonButton, RouterLink],
+  imports: [IonHeader, 
+  IonToolbar, 
+  IonTitle, 
+  IonContent, 
+  IonCard, 
+  IonCardHeader, 
+  IonCardSubtitle,  
+  IonGrid, 
+  IonRow, 
+  IonCol, RouterLink],
 })
 export class HomeComponent  implements OnInit {
 

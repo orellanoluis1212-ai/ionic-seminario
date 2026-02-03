@@ -1,0 +1,84 @@
+$color-fondo: #FFF8E1;
+$color-blanco: #FFFFFF;
+$color-titulo: #E65100;
+$color-texto: #FF9800;
+$color-primario: #FF9800;
+$color-acento: #4CAF50;
+
+$radio-borde: 12px;
+$sombra-suave: 0 4px 12px rgba(255, 152, 0, 0.1);
+$alto-imagen: 80px;
+
+.contenedor-principal {
+  --background: #{$color-fondo};
+  padding: 16px;
+}
+
+.cuadricula-menu {
+  padding: 0;
+}
+
+.tarjeta-menu {
+  margin: 4px;
+  border-radius: $radio-borde;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: $sombra-suave;
+  background: $color-blanco;
+  
+  // IMAGEN QUE OCUPA TODO EL ESPACIO
+  .imagen-tarjeta {
+    width: 100%;
+    height: $alto-imagen;
+    object-fit: cover; // Esto hace que la imagen cubra todo
+    border-radius: $radio-borde $radio-borde 0 0;
+    display: block; // Importante
+  }
+  
+  ion-card-header {
+    padding: 8px; // Reducido
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px; // Altura mínima
+  }
+  
+  ion-card-subtitle {
+    color: $color-titulo;
+    font-weight: 600;
+    font-size: 12px; // Un poco más pequeño
+    text-align: center;
+    margin: 0;
+    line-height: 1.2;
+    white-space: nowrap; // Evita salto de línea
+  }
+}
+
+// Responsividad
+@media (max-width: 768px) {
+  .tarjeta-menu {
+    height: 130px;
+    
+    .imagen-tarjeta {
+      height: 70px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .tarjeta-menu {
+    height: 120px;
+    
+    .imagen-tarjeta {
+      height: 60px;
+    }
+    
+    ion-card-subtitle {
+      font-size: 11px;
+    }
+  }
+}

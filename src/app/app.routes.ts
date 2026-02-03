@@ -39,11 +39,9 @@ export const routes: Routes = [
     path: 'rm-episodios',
     loadComponent: () => import('./pages/rm-episodios/rm-episodios.page').then( m => m.RmEpisodiosPage)
   },
- 
-  
-  
-  
-
-
+  {
+    path: 'permisos-cam-y-mic',
+    loadComponent: () => import('./pages/permisos-cam-y-mic/permisos-cam-y-mic.page').then( m => m.PermisosCAMYMICPage)
+  },
 
 ];
