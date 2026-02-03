@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-text id="volver" slot="start"  routerLink="">Home</ion-text>
+    <ion-title>Listado de Usuarios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-button expand="block" (click)="cargar()">
+    Recargar
+  </ion-button>
+  <ion-button expand="block" fill="outline" (click)="confirmacion()">
+    Borrar todo
+  </ion-button>
+  <ion-text *ngIf="cargando">
+    <p>Cargando registros</p>
+  </ion-text>
+
+  <ion-text *ngIf="!cargando && registros.length === 0">
+    <p>No hay registros guardados</p>
+  </ion-text>
+
+
+  <ion-card *ngFor="let r of registros">
+    <ion-card-header>
+      <ion-card-title>{{ r.nombre }}</ion-card-title>
+      <ion-card-subtitle>
+        {{ r.correo }} - {{ r.pais }} - {{ r.createdAt | date: 'medium' }}
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p><strong>Genero: </strong> {{ r.genero }}</p>
+      <p><strong>Fecha de nacimiento: </strong> {{ r.fechaNacimiento }}</p>
+      <p><strong>Notificaciones: </strong> {{ r.notificaciones ? 'Si' : 'No' }}</p>
+
+      <p *ngIf="r.biografia">
+        <strong>Biografía: </strong> {{ r.biografia }}
+      </p>
+
+      <p><strong>Términos: </strong> {{ r.terminos ? 'Aceptados' : 'No aceptados' }}</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-button expand="block" routerLink="/registro-usuario" class="ion-margin-top">
+    Volver al registro de usuarios
+  </ion-button>
+</ion-content>

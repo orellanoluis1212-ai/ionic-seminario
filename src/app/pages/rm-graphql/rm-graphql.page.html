@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-text slot="start" id="volver" routerLink="">Inicio</ion-text>
+    <ion-title>GraphQL – Rick & Morty</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-spinner *ngIf="loadingList"></ion-spinner>
+
+  <!-- GRID (QUERY SIMPLE) -->
+  <ion-grid *ngIf="!loadingList">
+    <ion-row>
+      <ion-col
+        size="6" size-md="4" size-lg="3"
+        *ngFor="let c of characters; trackBy: trackById"
+      >
+        <ion-card button (click)="openDetail(c.id)">
+          <img [src]="c.image" />
+          <ion-card-header>
+            <ion-card-title>{{ c.name }}</ion-card-title>
+            <ion-card-subtitle>{{ c.status }}</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- MODAL -->
+  <ion-modal [isOpen]="isModalOpen" (didDismiss)="closeModal()">
+    <ng-template>
+
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Detalle</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="modal.dismiss()">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="ion-padding">
+
+        <ion-spinner *ngIf="loadingDetail"></ion-spinner>
+
+        <!-- DETAIL (QUERY COMPLEJA) -->
+        <ion-card *ngIf="selected">
+          <ion-item lines="none">
+            <ion-avatar slot="start">
+              <img [src]="selected.image" />
+            </ion-avatar>
+            <ion-label>
+              <h2>{{ selected.name }}</h2>
+              <p>{{ selected.species }} • {{ selected.gender }} • {{ selected.status }}</p>
+            </ion-label>
+          </ion-item>
+
+          <ion-card-content>
+            <p><strong>Origen:</strong> {{ selected.origin.name }}</p>
+            <p><strong>Ubicación:</strong> {{ selected.location.name }}</p>
+
+            <ion-button expand="block" (click)="loadResidents()">
+              Ver residentes
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+
+        <!-- LOCATION + RESIDENTS (QUERY MÁS COMPLEJA) -->
+        <ion-spinner *ngIf="loadingResidents"></ion-spinner>
+
+        <ion-card *ngIf="locationInfo">
+          <ion-card-header>
+            <ion-card-title>{{ locationInfo.name }}</ion-card-title>
+            <ion-card-subtitle>
+              {{ locationInfo.type }} • {{ locationInfo.dimension }}
+            </ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-list>
+            <ion-item *ngFor="let r of locationInfo.residents">
+              <ion-avatar slot="start">
+                <img [src]="r.image" />
+              </ion-avatar>
+              <ion-label>
+                <h3>{{ r.name }}</h3>
+                <p>{{ r.status }} • {{ r.species }}</p>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card>
+
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+</ion-content>

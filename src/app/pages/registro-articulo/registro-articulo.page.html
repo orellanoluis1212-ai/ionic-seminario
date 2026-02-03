@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-text id="volver" slot="start"  routerLink="">Home</ion-text>
+    <ion-title>Registro de productos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <form [formGroup]="formulario" (ngSubmit)="registrar()">
+
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input formControlName="nombre"></ion-input>
+    </ion-item>
+    <ion-note color="danger"
+      *ngIf="enviado && formulario.get('nombre')?.invalid">
+      El nombre es obligatorio (mínimo 3 caracteres)
+    </ion-note>
+
+    <ion-item>
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input type="number" formControlName="precio"></ion-input>
+    </ion-item>
+    <ion-note color="danger"
+      *ngIf="enviado && formulario.get('precio')?.invalid">
+      El precio es obligatorio
+    </ion-note>
+
+    <ion-item>
+      <ion-label>Categoría</ion-label>
+      <ion-select formControlName="categoria">
+        <ion-select-option *ngFor="let c of categorias" [value]="c">
+          {{ c }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-note color="danger"
+      *ngIf="enviado && formulario.get('categoria')?.invalid">
+      La categoria es obligatoria
+    </ion-note>
+
+    <ion-item>
+      <ion-label>Fecha de ingreso</ion-label>
+      <ion-datetime presentation="date" formControlName="fechaIngreso"></ion-datetime>
+    </ion-item>
+    <ion-note color="danger"
+      *ngIf="enviado && formulario.get('fechaIngreso')?.invalid">
+      La categoria es obligatoria
+    </ion-note>
+
+    <ion-item>
+      <ion-label>Disponible</ion-label>
+      <ion-toggle formControlName="disponible"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-textarea formControlName="descripcion"></ion-textarea>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-checkbox formControlName="confirmar"></ion-checkbox>
+      <ion-label class="ion-margin-start">
+        Confirmo el registro del artículo
+      </ion-label>
+    </ion-item>
+    <ion-note color="danger"
+      *ngIf="enviado && formulario.get('confirmar')?.invalid">
+      Debes confirmar crear el articulo
+    </ion-note>
+
+    <ion-button expand="block" type="submit">
+      Guardar artículo
+    </ion-button>
+
+    <ion-text color="danger"
+      *ngIf="enviado && formulario.invalid">
+      ⚠️ El registro está incompleto. Revise los campos obligatorios.
+    </ion-text>
+
+    <ion-button expand="block" fill="outline" routerLink="/listado-articulo">
+      Ver listado
+    </ion-button>
+
+  </form>
+
+</ion-content>

@@ -1,0 +1,10 @@
+.characters-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+}
+
+.carta-personaje-pequeño {
+  min-width: 140px;
+  text-align: center;
+}

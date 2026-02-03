@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar class="chat-header">
+    <ion-text id="volver" slot="start"  routerLink="">Home</ion-text>
+
+    <ion-title>Asistente Virtual</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="chat-content">
+
+  <div class="messages">
+
+    <div
+      *ngFor="let msg of messages; trackBy: trackByIndex"
+      class="message"
+      [class.user]="msg.from === 'user'"
+      [class.bot]="msg.from !== 'user'"
+    >
+      <div class="bubble">
+        {{ msg.text }}
+      </div>
+    </div>
+
+  </div>
+
+  <div class="loading" *ngIf="sending">
+    <ion-spinner name="dots"></ion-spinner>
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="chat-footer">
+
+    <div class="input-wrapper">
+
+      <ion-input
+        [(ngModel)]="input"
+        placeholder="Escribe tu mensaje..."
+        (keyup.enter)="send()">
+      </ion-input>
+
+      <ion-button
+      class="enviar"
+        shape="round"
+        (click)="send()"
+        [disabled]="sending || !input.trim()">
+        Enviar
+      </ion-button>
+
+    </div>
+
+  </ion-toolbar>
+</ion-footer>
